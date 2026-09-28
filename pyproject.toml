@@ -5,7 +5,7 @@ description = "A TDD kata: FizzBuzz, from notebook exploration to a tested, publ
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "Your Name", email = "you@example.com" }]
+authors = [{ name = "Louise Germain", email = "louisegermain@gmail.com" }]
 
 [build-system]
 requires = ["hatchling"]
@@ -25,3 +25,9 @@ dev = [
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+
+[tool.ruff.lint.per-file-ignores]
+# marimo cells intentionally end on a bare expression to define what the
+# cell displays — that pattern is exactly what flake8-bugbear's B018
+# ("useless expression") flags, so it's disabled for notebook files.
+"notebooks/*.py" = ["B018","PLR1711"]
